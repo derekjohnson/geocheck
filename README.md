@@ -1,6 +1,6 @@
 # Readme
 
-## v 0.2.2 (2014-05-15)
+## v 0.2.3 (2014-06-25)
 
 A modified version of [HTML5 boilerplate](https://github.com/h5bp/html5-boilerplate) with [Sass](http://sass-lang.com/) and [Grunt](http://gruntjs.com/).
 
