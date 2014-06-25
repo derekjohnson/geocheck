@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.2.4 2014-06-25
+
+* remove unused grunt plugin
+* fix issue where imageoptim was failing sometimes
+
 ## v0.2.2 2014-05-15
 
 * update HTML5 shiv (for picture element support)

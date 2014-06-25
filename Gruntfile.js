@@ -139,9 +139,7 @@ module.exports = function(grunt) {
 					quitAfter: true
 				},
 
-				files: {
-					src: ['dist/images']
-				}
+				src: ['dist/images']
 			}
 		},
 
