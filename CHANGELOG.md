@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.2.4
+
+* add non-standard code to remove the 300ms tap delay on Windows phones
+
 ## v0.2.4 2014-06-25
 
 * remove unused grunt plugin
