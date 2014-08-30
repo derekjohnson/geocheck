@@ -43,6 +43,8 @@ module.exports = function(grunt) {
 				options: {
 					beautify: false,
 					sections: {
+						head1: 'src/parts/head1.part.html',
+						head2: 'src/parts/head2.part.html',
 						header: 'src/parts/header.part.html',
 						footer: 'src/parts/footer.part.html'
 					}
