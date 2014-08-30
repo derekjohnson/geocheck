@@ -1,6 +1,10 @@
 # Changelog
 
-## v0.2.4
+## v0.2.5 2014-08-31
+
+* various fixes and enhancements
+
+## v0.2.4 2014-07-30
 
 * add non-standard code to remove the 300ms tap delay on Windows phones
 

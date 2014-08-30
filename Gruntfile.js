@@ -43,6 +43,8 @@ module.exports = function(grunt) {
 				options: {
 					beautify: false,
 					sections: {
+						head1: 'src/parts/head1.part.html',
+						head2: 'src/parts/head2.part.html',
 						header: 'src/parts/header.part.html',
 						footer: 'src/parts/footer.part.html'
 					}
@@ -60,7 +62,8 @@ module.exports = function(grunt) {
 				files: {
 					'dist/css/style.css': 'src/sass/style.scss',
 					'dist/css/old-ie.css': 'src/sass/old-ie.scss',
-					'dist/css/really-old-ie.css': 'src/sass/really-old-ie.scss'
+					'dist/css/really-old-ie.css': 'src/sass/really-old-ie.scss',
+					'dist/css/fonts.css': 'src/sass/webfonts.scss'
 				}
 			}
 		},
