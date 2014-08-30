@@ -60,7 +60,8 @@ module.exports = function(grunt) {
 				files: {
 					'dist/css/style.css': 'src/sass/style.scss',
 					'dist/css/old-ie.css': 'src/sass/old-ie.scss',
-					'dist/css/really-old-ie.css': 'src/sass/really-old-ie.scss'
+					'dist/css/really-old-ie.css': 'src/sass/really-old-ie.scss',
+					'dist/css/fonts.css': 'src/sass/webfonts.scss'
 				}
 			}
 		},
