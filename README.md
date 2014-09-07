@@ -26,3 +26,7 @@
 - run function that checks for geolocation
 - success runs a function that puts data into the object and stores it
 - sync function runs
+
+## Next steps from current commit
+
+- allow more than one stamp in localStorage

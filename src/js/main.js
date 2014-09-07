@@ -20,3 +20,83 @@
 		}
 	}
 }());
+
+// Cross browser helper functions
+var helper = (function(win, doc, undefined) {
+
+	return {
+		// Cross browser events
+		add_event: function(el, ev, fn) {
+			'addEventListener' in win ? 
+				el.addEventListener(ev, fn, false) : 
+				el.attachEvent('on' + ev, fn);
+		},
+
+		// Faster class selectors
+		// http://jsperf.com/queryselector-vs-getelementsbyclassname-0
+		get_single_by_class: function(className) {
+			return 'getElementsByClassName' in doc ? 
+				doc.getElementsByClassName(className)[0] : 
+				doc.querySelector('.' + className);
+		},
+
+		//http://jsperf.com/byclassname-vs-queryselectorall
+		get_many_by_class: function(className) {
+			return 'getElementsByClassName' in doc ? 
+				doc.getElementsByClassName(className) : 
+				doc.querySelectorAll('.' + className);
+		}
+	};
+
+})(this, this.document);
+
+// The business end
+(function(win, doc, undefined) {
+	'use strict';
+
+	// The object to hold collected data
+	var stamp = {};
+
+	// The button
+	var stamper = doc.getElementById('stamper');
+
+	// Success callback
+	var log_location = function(position) {
+		stamp.latitude = position.coords.latitude;
+		stamp.longitude = position.coords.longitude;
+		stamp.accuracy = position.coords.accuracy; // metres
+		stamp.altitude = position.coords.altitude;
+		stamp.altitude_accuracy = position.coords.altitudeAccuracy; // metres
+		stamp.timestamp = position.timestamp;
+
+		localStorage.stamp = JSON.stringify(stamp);
+	};
+
+	// Failure callback
+	var display_error = function(error) {
+		var errors = {
+			1: 'Permission denied',
+			2: 'Position unavailable',
+			3: 'Timeout'
+		}
+
+		console.log(errors[error.code]);
+	}
+
+	// Get geo info when button is clicked
+	var stamp_it = function() {
+		if(navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(
+				log_location,
+				display_error,
+				{
+					enableHighAccuracy: true
+				}
+			);
+		} else {
+			// show the HTML form, mayby just change the class on <html> to no-js
+		}
+	};
+
+	helper.add_event(stamper, 'click', stamp_it);
+}(this, this.document));
