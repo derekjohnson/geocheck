@@ -50,26 +50,45 @@ var helper = (function(win, doc, undefined) {
 
 })(this, this.document);
 
-// The business end
+// Stamping locations
 (function(win, doc, undefined) {
 	'use strict';
 
 	// The object to hold collected data
-	var stamp = {};
+	var stamps = {};
 
 	// The button
 	var stamper = doc.getElementById('stamper');
 
 	// Success callback
 	var log_location = function(position) {
-		stamp.latitude = position.coords.latitude;
+		// count how many elements are already in there
+		var i = 0;
+
+		for(var elements in stamps) {
+			i++;
+		}
+
+		if(i) {
+			stamps[i] = {
+				1: 'new'
+			};
+		} else {
+			stamps[0] = {
+				1: 'first'
+			};
+		}
+
+		console.log(stamps);
+
+	/*	stamp.latitude = position.coords.latitude;
 		stamp.longitude = position.coords.longitude;
 		stamp.accuracy = position.coords.accuracy; // metres
 		stamp.altitude = position.coords.altitude;
 		stamp.altitude_accuracy = position.coords.altitudeAccuracy; // metres
 		stamp.timestamp = position.timestamp;
 
-		localStorage.stamp = JSON.stringify(stamp);
+		localStorage.stamp = JSON.stringify(stamp);*/
 	};
 
 	// Failure callback
