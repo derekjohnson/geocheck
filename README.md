@@ -30,3 +30,4 @@
 ## Next steps from current commit
 
 - allow more than one stamp in localStorage
+- build fallback form at least
