@@ -55,7 +55,7 @@ var helper = (function(win, doc, undefined) {
 	'use strict';
 
 	// The object to hold collected data
-	var stamps = {};
+	var stamps = localStorage.stamps ? JSON.parse(localStorage.stamps) : {};
 
 	// The button
 	var stamper = doc.getElementById('stamper');
@@ -65,30 +65,33 @@ var helper = (function(win, doc, undefined) {
 		// count how many elements are already in there
 		var i = 0;
 
+		// build a location object
+		var build_loc = function(position) {
+			return {
+				'latitude': position.coords.latitude,
+				'longitude': position.coords.longitude,
+				'accuracy': position.coords.accuracy, // metres
+				'altitude': position.coords.altitude,
+				'altitude_accuracy': position.coords.altitudeAccuracy, // metres
+				'timestamp': position.timestamp
+			};
+		};
+
 		for(var elements in stamps) {
 			i++;
 		}
 
+		// Increment keys if there are already elements in the object
+		// otherwise put one is as 0
 		if(i) {
-			stamps[i] = {
-				1: 'new'
-			};
+			stamps[i] = build_loc(position);
 		} else {
-			stamps[0] = {
-				1: 'first'
-			};
+			stamps[0] = build_loc(position);
 		}
 
 		console.log(stamps);
 
-	/*	stamp.latitude = position.coords.latitude;
-		stamp.longitude = position.coords.longitude;
-		stamp.accuracy = position.coords.accuracy; // metres
-		stamp.altitude = position.coords.altitude;
-		stamp.altitude_accuracy = position.coords.altitudeAccuracy; // metres
-		stamp.timestamp = position.timestamp;
-
-		localStorage.stamp = JSON.stringify(stamp);*/
+		localStorage.stamps = JSON.stringify(stamps);
 	};
 
 	// Failure callback
@@ -113,7 +116,7 @@ var helper = (function(win, doc, undefined) {
 				}
 			);
 		} else {
-			// show the HTML form, mayby just change the class on <html> to no-js
+			// show the HTML form, maybe just change the class on <html> to no-js
 		}
 	};
 
