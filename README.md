@@ -1,39 +1,33 @@
-# Readme
+# GeoCheck
 
-## v 0.2.5 (2014-08-31)
+## Features
 
-A modified version of [HTML5 boilerplate](https://github.com/h5bp/html5-boilerplate) with [Sass](http://sass-lang.com/) and [Grunt](http://gruntjs.com/).
+- click a button to gather information about current location and time
+- store it in an object
+- stick it in localStorage or browser db and sync if connection available
 
-### Features
+## Information to gather
 
-#### HTML
-* files built from templates and partials in ./src/ and ./src/parts/
+- time
+- lat/long
+- elevation
+- optional photo (phase 2)
+- notes
 
-#### CSS
-* CSS compiled from Sass in ./src/sass/
-* CSS Lint task available
+## How to sync
 
-#### JS
-* concatenated and minified from ./src/js
-* JSHint task available
+- AJAX call to db script on server
+- tell user how it went
 
-#### Images
+## Program flow
 
-##### SVG images
+- create empty object
+- listen for click on button
+- run function that checks for geolocation
+- success runs a function that puts data into the object and stores it
+- sync function runs
 
-* SVG's in ./src/assets/images optimised using svgmin
-* Optimised SVG's rasterised using svg2png
-* PNG's optimised using imageoptim and imagealpha
+## Next steps from current commit
 
-##### Icons
-
-* SVG's in /src/assets/icons optimised using svgmin
-* grunticon works its magic on them, saving all relevant files to dist/css
-
-#### Server
-
-* Uses connect to serve files in ./dist/ to any device on the same network
-
-#### Grunt
-
-* Tasks loaded using jit-grunt for approximately 1.5s (75%) time saving on `grunt`. Much more on watch tasks.
+- allow more than one stamp in localStorage
+- build fallback form at least
